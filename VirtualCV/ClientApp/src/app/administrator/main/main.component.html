@@ -1,0 +1,37 @@
+<div class="example-container">
+  <mat-toolbar style="justify-content: space-between;">
+    <div class="nav-left">
+
+    <a> <img src="assets/Logo.png" width="64" height="64" ></a>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+      <h1 style="margin-left:10px">CV</h1>
+    </div>
+    <div class="nav-right" style="margin-top: 15px">
+        <mat-form-field style="width: 40%">
+            <mat-label>Language</mat-label>
+            <mat-select [(ngModel)]="translateService.selectedLanguage" name="lang">
+              <mat-option value="En" (click)="translateService.use('en')"> En </mat-option>
+              <mat-option value="Sr" (click)="translateService.use('sr')">Sr</mat-option>
+            </mat-select>
+          </mat-form-field>
+      <mat-icon style="margin-right: 16px; float: left; margin-top: 20px; margin-left: 5px"> account_circle</mat-icon>
+      <mat-label style="margin-top:16px">{{currentUserName}}</mat-label>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side">
+      <mat-nav-list>
+        <button mat-button routerLink="/position" style="font-size:large; padding-bottom: 10px"><mat-icon style="margin-right:10px;">brightness_high</mat-icon>{{["sideNav", "Position"] | translate}}</button><br>
+        <button mat-button routerLink="/question" style="font-size:large; padding-bottom: 10px"><mat-icon style="margin-right: 10px">contact_support</mat-icon>{{["sideNav", "Questions"] | translate}}</button><br>
+        <button mat-button routerLink="/clientsList" style="font-size:large; padding-bottom: 10px"><mat-icon style="margin-right: 10px">people</mat-icon>{{["sideNav", "Candidates"] | translate}}</button><br>
+        <button mat-button (click)=auth.logout() style="font-size:large; padding-bottom: 10px"><mat-icon style="margin-right: 10px">lock</mat-icon>{{["sideNav", "Logout"] | translate}}</button>
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+  </mat-sidenav-container>
+
+</div>

@@ -1,0 +1,96 @@
+.mainDiv{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-items: center; */
+  margin-block-end: 40px;
+}
+.material-icons.md-dark { color: rgba(221, 119, 24, 0.54); }
+
+.addQuestion{
+  align-items: center;
+  margin-top: 10px;
+  width: 100%
+}
+.listQuestion{
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.question {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.edit-card{
+  margin-left: 15px;
+  width: 80%;
+  margin-top: 39px;
+}
+.question-option{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* min-width: 25%; */
+  width: 100%;
+  align-items: center;
+}
+.nav-left{
+  display: flex;
+}
+.searchQuestion{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 0;
+  margin-left: 50px;
+}
+.mainQuestion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
+.mat-form{
+  min-width: 20%;
+}
+.selectPositionQ{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.filter-mat-form{
+  width: 80%;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+}
+.edit-question{
+  width: 35%;
+}
+.nav-right{
+  display: flex;
+}
+.paginator{
+  display: flex;
+  justify-content: center
+}
+.questionInput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.virtualKeyboard{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}

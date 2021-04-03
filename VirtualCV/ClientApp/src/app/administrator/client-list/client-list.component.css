@@ -1,0 +1,95 @@
+.span {
+  display: flex;
+}
+.mainSeeClient{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 50px;
+}
+.listClients{
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-block-end: 40px;
+}
+span{
+  /* padding-left: 15px; */
+  display: contents;
+  }
+
+  .personalCredntionals {
+    margin-left: 30px
+  }
+  .mat-list-base .mat-list-item.mat-multi-line .mat-list-item-content{
+    justify-content: space-between!important
+  }
+
+.mat-list-item-content{
+  justify-content: space-between
+}
+
+.clientName{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-left: 30px;
+}
+.nav-left{
+  display: flex;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 0;
+  margin-left: 50px;
+}
+.button{
+  height: 100px;
+  background: #2a4b75;
+  margin-right: 10px;
+  color: white;
+  margin-bottom: 48px;
+}
+.filters{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.sec{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.nav-right{
+  display: flex;
+}
+.test{
+  width: 100%;
+}
+
+.select{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .listClients{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    margin-block-end: 40px;
+  }
+}

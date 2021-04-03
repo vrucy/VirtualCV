@@ -1,0 +1,50 @@
+<div class="first">
+  <mat-list>
+    <h3 mat-subheader style="margin-left: 25px;"><b>Questions </b></h3>
+    <mat-list-item>
+      <div class="list-item">
+        <div *ngFor="let type of uniqueAnswerType">
+          <div class="titleOfQuestion">
+            <h3 mat-subheader style="font-size: x-large;">{{type}}</h3>
+            <!-- <mat-divider class="divider"></mat-divider> -->
+          </div>
+          <div class="question">
+            <div *ngFor="let question of questions;let i = index;let firstItem = first; ">
+                <!-- (mouseover)="hover = true" (mouseleave)="hover=false"   -->
+                <!-- [ngStyle]="{backgroundColor: hover==true  ? 'lightgrey' : 'grey'}" -->
+              <div *ngIf="type === question.questionType.nameType" class="one">
+                <mat-divider [ngClass]="{'divider': !firstItem, 'test': firstItem}"></mat-divider>
+                <div class="q">
+                  <p > {{question.question}}</p>
+                </div>
+                <div class="answers">
+                  <div *ngIf="question.componentId == 1" class="inputAnswer">
+                    <mat-slider [(ngModel)]="questions[i].Answer" [thumbLabel]="thumbLabel"
+                                (change)="sliderChange(questions[i].Answer, i)">{{question.Answer}}</mat-slider>
+                  </div>
+                  <div *ngIf="question.componentId == 2" class="inputAnswer">
+                    <mat-radio-group [(ngModel)]=questions[i].Answer style="align-items:center!important">
+                      <mat-radio-button value="true">Yes</mat-radio-button>
+                      <mat-radio-button value="false">No</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div *ngIf="question.componentId == 3" class="inputAnswer">
+                    <mat-form-field>
+                      <textarea matInput [(ngModel)]=questions[i].Answer placeholder="Leave your answer"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+  <div class="buttonSubmit">
+    <button mat-button (click)="submit()" style="margin-top: 30px">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+
+</div>

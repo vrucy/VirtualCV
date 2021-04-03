@@ -1,0 +1,13 @@
+﻿using VirtualCV.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace VirtualCV.Repository
+{
+    interface IQuestionRepo
+    {
+        IEnumerable<Questions> GetQuestion(int id);
+    }
+}

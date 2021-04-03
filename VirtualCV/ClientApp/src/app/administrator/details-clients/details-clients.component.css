@@ -1,0 +1,39 @@
+.detalisClient{
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-top: 40px;
+  margin-left: 30px;
+}
+.answerClients{
+  display: flex;
+  /* flex-wrap: wrap; */
+  margin: 20px;
+  justify-content: center;
+   /*max-width: 70%;*/
+  min-width: 50%
+}
+.answersCards{
+  height: 100%;
+  margin: 15px;
+  /* width: 50%; */
+}
+.avatarClient{
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+}
+.descriptionClient{
+  padding-top: 10px;
+}
+.nav-left{
+  display: flex;
+}
+.nav-right{
+  display: flex;
+}
+.title {
+  font-size: 42px;
+  color: green;
+}

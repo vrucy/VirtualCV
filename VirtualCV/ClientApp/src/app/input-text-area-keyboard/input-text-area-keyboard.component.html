@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline">
+
+  <textarea matInput *ngIf="isVirtualKeyboard"
+  [matKeyboard]="'sr-CYRL'"
+  [(ngModel)]="value"
+  (ngModelChange)="modelChanged()"
+  [placeholder]="placeholder "></textarea>
+
+  <textarea matInput *ngIf="!isVirtualKeyboard" [placeholder]="placeholder " [(ngModel)]="value" (ngModelChange)="modelChanged()">  </textarea>
+
+  </mat-form-field>

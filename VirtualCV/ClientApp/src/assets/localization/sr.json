@@ -1,0 +1,51 @@
+{
+"PersonalCredentials": {
+    "personalCredentials": "Licni Podaci",
+    "Name": "Ime",
+    "Last Name": "Prezime",
+    "Mobile": "Mobilni",
+    "Email": "Elektronska adresa",
+    "Select position": "Odaberite poziciju"
+    },
+    "sideNav": {
+      "Position" :"Pozicija",
+      "Questions" : "Pitanja",
+      "Candidates" : "Kandidati",
+      "Logout": "Odjavi se"
+    },
+    "Position" :{
+      "Position" : "Pozicija",
+      "Add" : "Dodaj",
+      "Search Position" : "Pretrazi Pozicije",
+      "Name" : "Ime",
+      "Description" : "Opis",
+      "Main" : "Glavni Meni"
+    } ,
+    "Question": {
+      "QuestionTitle" : "Pitanja",
+      "QuestionField" : "Pitanje",
+      "Add New Question" : "Dodaj novo pitanje",
+      "Existing Questions" : "Postojeca Pitanja",
+      "Select Position" : "Odaberi Poziciju",
+      "Select Type" : "Odaberi Tip",
+      "Search" : "Trazi",
+      "Select Type Question" : "Odaberi Tip Pitanja",
+      "Select Type Component" : "Odaberi Tip Komponente",
+      "Main" : "Glavni Meni",
+      "Description" : "Opis"
+    },
+    "clientsList" : {
+      "Candidats List" : "Lista Kandidata",
+      "Select Position" : "Odaberi Poziciju",
+      "Search" : "Trazi",
+      "Name" : "Ime",
+      "Last Name" : "Prezime",
+      "Email" : "Elektronska Posta",
+      "Mobile" : "Mobilni"
+    },
+    "details" : {
+      "Clients List" : "Lista Kandidata",
+      "Mobile" : "Mobilni",
+      "Email" : "Elektronska Posta"
+    }
+}

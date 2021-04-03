@@ -1,0 +1,28 @@
+<form class="needs-validation" [formGroup]="detailForm" novalidate>
+  <div class="login">
+    <mat-card class="login-card">
+      <img src="../../../assets/Logo.png">
+      <!-- <mat-form-field>
+     <input matInput placeholder="User name" [(ngModel)]="UserName">
+    </mat-form-field> -->
+      <!-- <app-input-keyboard #username placeholder="User name" (modelChange)="setUserName($event)"></app-input-keyboard> -->
+      <custom-input [label]="'User Name'" [validations]="{required:'User Name required'}">
+        <mat-form-field>
+          <input matInput inputRef class="form-control" formControlName="userName" type="text" [(ngModel)]="user" />
+        </mat-form-field>
+      </custom-input>
+
+      <custom-input [label]="'Password'" [validations]="{required:'Password required'}">
+          <mat-form-field>
+            <input matInput inputRef class="form-control" formControlName="pass" type="password" [(ngModel)]="pass" />
+          </mat-form-field>
+        </custom-input>
+
+      <!-- <app-input-keyboard #password placeholder="Password" type="passwrod"></!-->
+      <!-- <mat-form-field>
+      <input matInput placeholder="Password" [(ngModel)]="Password" type="password">
+    </mat-form-field> -->
+      <button class="buttonColor" mat-button (click)="login()">Login</button>
+    </mat-card>
+  </div>
+</form>

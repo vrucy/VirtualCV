@@ -1,0 +1,22 @@
+<mat-form-field appearance="outline">
+
+<input matInput *ngIf="isVirtualKeyboard"
+  [matKeyboard]="'sr'"
+  [(ngModel)]="value"
+  (ngModelChange)="modelChanged()"
+  [placeholder]="placeholder "
+  [type]="type" type="password"
+  [attr.name]="name"
+           [attr.minlength]="minlength"
+           [attr.maxlength]="maxlength"
+           [required]="required"
+          
+/>
+ <!--[invalid]="invalid"-->
+<!-- <input matInput *ngIf="!isVirtualKeyboard" [placeholder]="placeholder " [(ngModel)]="value" (ngModelChange)="modelChanged()" -->
+<!-- /> -->
+<!-- (input)="onChange($event.target.value)" (ngModelChange)="modelChanged()" -->
+  <input matInput *ngIf="!isVirtualKeyboard" [(ngModel)]="value"  (ngModelChange)="modelChanged()" [placeholder]="placeholder"  [type]="type" type="password"/>
+
+  <!-- <input matInput *ngIf="isPassword" [(ngModel)]="value"  (ngModelChange)="modelChanged()" [placeholder]="placeholder" [type]="type" type="password"/> -->
+</mat-form-field>

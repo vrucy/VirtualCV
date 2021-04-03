@@ -1,0 +1,15 @@
+<form class="needs-validation" [formGroup]="detailForm" novalidate>
+  <custom-input [label]="'First Name'" [validations]="{required:'First Name required'}">
+    <mat-form-field>
+      <input matInput inputRef class="form-control" formControlName="firstName" type="text" />
+    </mat-form-field>
+  </custom-input>
+  <custom-input [label]="'Last Name'" [validations]="{required:'Last Name required'}">
+    <mat-form-field>
+    <textarea matInput inputRef class="form-control" formControlName="lastName" type="text"></textarea>
+  </mat-form-field>
+  </custom-input>
+  <div>
+    <button mat-button [disabled]="detailForm.invalid">Primary</button>
+  </div>
+</form>

@@ -1,0 +1,8 @@
+<div class="mainP">
+<app-camera (pictureTaken)="handleImage($event)" *ngIf="!webcamImage"></app-camera>
+<div class="snapshot" *ngIf="webcamImage">
+      <img [src]="webcamImage.imageAsDataUrl" name="Img"  />
+</div>
+<button mat-button *ngIf="webcamImage" (click)="submit()" class="material-icons"><mat-icon>save</mat-icon></button>
+<button *ngIf="webcamImage" mat-button (click)="retry()" class="material-icons"><mat-icon>refresh</mat-icon></button>
+</div>

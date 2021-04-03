@@ -1,0 +1,21 @@
+<div class="form-group" >
+  <label class="control-label">{{label}}</label>
+  <br />
+  <div [ngClass]="{'has-error':isError}" >
+
+   <ng-content #inputElementRef></ng-content>
+
+   <div *ngIf="isVirtualKeyboard">
+    <!-- <span class="on-screen-keyboard-button" (click)="toggle()"> -->
+      <button mat-button (click)="toggle()">
+      <mat-icon class="inline-icon" *ngIf="!isKeyboardVisible">keyboard</mat-icon>
+    </button>
+      <mat-icon class="inline-icon" *ngIf="isKeyboardVisible">keyboard_hide</mat-icon>
+    <!-- </span> -->
+  </div>
+
+   <ng-container *ngIf='isError'>
+     <span  *ngFor="let msg of errorMessages"> {{msg}}</span>
+   </ng-container>
+  </div>
+ </div>

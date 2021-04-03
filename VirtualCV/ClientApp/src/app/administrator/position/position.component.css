@@ -1,0 +1,69 @@
+.position{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  margin-block-end: 40px;
+}
+
+.mat-card-example{
+  display: flex;
+  /* width: 600px; */
+  width: 100%;
+
+}
+.searchPosition{
+ display: flex;
+ justify-content: center;
+ margin-bottom: 5px;
+}
+.buttonPosition{
+  display: flex;
+}
+.title{
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.descprition{
+  width: 80%;
+  display: flex;
+  justify-content: space-between!important
+}
+.first{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 60%;
+}
+.nav-left{
+  display: flex;
+}
+.nav-right{
+  display: flex;
+  justify-content: space-evenly;
+}
+.input-position{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titl{
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 0;
+  margin-left: 50px;
+}
+.edit-card{
+  margin-left: 15px;
+  margin-top: 30px;
+  width: 80%;
+}
+.mat-list-base .mat-list-item .mat-line{
+  white-space:inherit;
+}
+.visualKeyboard{
+  width: 100%;
+    display: flex;
+    justify-content: center;
+}

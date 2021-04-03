@@ -1,0 +1,126 @@
+<mat-toolbar color="primary" style="justify-content: space-between; flex-wrap: wrap;">
+  <div class="nav-left">
+    <button mat-icon-button class="material-icons" routerLink="/mainAdmin">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <h1 style="margin-top:3px">{{['Position' , 'Main'] | translate}}</h1>
+  </div>
+  <div class="nav-right">
+    <mat-form-field style="width: 45%">
+      <mat-label>Language</mat-label>
+      <mat-select [(ngModel)]="translateService.selectedLanguage" name="lang">
+        <mat-option value="En" (click)="translateService.use('en')"> En </mat-option>
+        <mat-option value="Sr" (click)="translateService.use('sr')">Sr</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-icon style=" float: left; margin-top: 20px; margin-left: 5px"> account_circle</mat-icon>
+    <mat-label style="margin-top: 15px">{{currentUserName}}</mat-label>
+  </div>
+</mat-toolbar>
+<div class="titl">
+  <h3>{{["Position" , "Position"] | translate}}</h3>
+</div>
+<div class="position">
+  <div class="first">
+    <div *ngIf="!selectedPosition">
+      <mat-accordion style="width: 100%">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="material-icons" style="color: #C0C0C0 ;margin: inherit;">add_circle</mat-icon>
+              <span style="padding-top: 3px">{{["Position" , "Add"] | translate}}</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="input-position">
+            <!-- <mat-form-field appearance="outline">
+            <input matInput placeholder="{{['Position' , 'Name'] | translate}}" [(ngModel)]="positoinName.Name" name="name">
+          </mat-form-field> -->
+            <app-input-keyboard #name placeholder="{{['Position' , 'Name'] | translate}}" class="visualKeyboard"
+                                (modelChange)="setPositionName($event)">
+            </app-input-keyboard>
+            <app-input-text-area-keyboard placeholder="{{['Position' , 'Description'] | translate}}"
+                                          class="visualKeyboard" (modelChange)="setPositionDescritpion($event)">
+            </app-input-text-area-keyboard>
+
+            <!-- <mat-form-field appearance="outline">
+            <textarea matInput placeholder="{{['Position' , 'Description'] | translate}}" [(ngModel)]=positoinName.Description
+                      name="descprition"></textarea>
+          </mat-form-field> -->
+            <button mat-icon-button class="material-icons" style="background-color: #ff9800; color: white "
+                    (click)="submit() ">
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <mat-card style="margin-block-end: 10px;margin-bottom: 15px; margin-top: 30px;">
+      <div class="mat-card-example">
+        <mat-list style="text-align: left; width: 100%">
+
+          <div class="searchPosition" style="margin-bottom:25px">
+            <!-- <mat-form-field appearance="outline" style="width:80%;">
+              <mat-label>{{["Position" , "Search Position"] | translate}}</mat-label>
+              <input matInput placeholder="Search Position" [(ngModel)]="positionForSearch"
+                     (keyup)="resetSearchau ($event)">
+            </mat-form-field> -->
+
+            <app-input-keyboard #name placeholder="{{['Position' , 'Search Position'] | translate}}"
+                                class="visualKeyboard" (modelChange)="setPositionForSearch($event)">
+            </app-input-keyboard>
+          </div>
+
+          <div class="title" fxLayout="row">
+            <div style="display: flex; width:45%">
+              <span style="margin-left:20px">{{['Position' , 'Name'] | translate}}</span>
+            </div>
+            <div style="display: flex; width:50% ">
+              <span>{{['Position' , 'Description'] | translate}}</span>
+            </div>
+          </div>
+          <div class="example">
+            <mat-list-item *ngFor="let position of positions | filter:positionForSearch">
+              <div class="descprition" fxLayout="row">
+                <mat-divider style="background: #ff9800"></mat-divider>
+                <div style="display:flex; width: 40%; align-items: center;">
+                  <mat-label mat-line style="font-size: large">{{position.name}}</mat-label>
+                </div>
+                <div style="display:flex; width: 45%">
+                  <mat-label mat-line style="font-size: large;;margin-bottom: 2px">{{position.description}}</mat-label>
+                </div>
+              </div>
+              <div class="buttonPosition">
+                <button mat-icon-button class="material-icons" (click)="selectPosition(position)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </div>
+    </mat-card>
+  </div>
+
+  <div *ngIf="selectedPosition">
+    <mat-card class="edit-card">
+      <div style="display: flex; flex-direction: column">
+        <mat-form-field>
+          <input matInput placeholder="{{['Position' , 'Name'] | translate}}" [(ngModel)]="selectedPosition.name">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="{{['Position' , ''] | translate}}"
+                    [(ngModel)]="selectedPosition.description"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-icon-button class="material-icons" (click)="edit(selectedPosition.id, selectedPosition)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="material-icons" (click)="close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

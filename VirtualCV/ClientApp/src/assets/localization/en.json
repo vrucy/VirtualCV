@@ -1,0 +1,52 @@
+{
+  "PersonalCredentials": {
+    "personalCredentials": "Personal Credentials",
+    "Name": "First Name",
+    "Last Name": "Last Name",
+    "Mobile": "Mobile",
+    "Email": "E-Mail",
+    "Select position": "Select Position"
+  },
+  "sideNav": {
+    "Position" :"Position",
+    "Questions" : "Questions",
+    "Candidates" : "Candidates",
+    "Logout": "Logout"
+  },
+  "Position" :{
+    "Position" : "Position",
+    "Add" : "Add",
+    "Search Position" : "Search Position",
+    "Name" : "Name",
+    "Description" : "Description",
+    "Main" : "Main"
+  },
+  "Question": {
+    "QuestionTitle" : "Questions",
+    "Question" : "Question",
+    "QuestionField": "Question",
+    "Add New Question" : "Add New Question",
+    "Existing Questions" : "Existing Questions",
+    "Select Position" : "Select Position",
+    "Select Type" : "Select Type",
+    "Search" : "Search",
+    "Select Type Question" : "Select Type Question",
+    "Select Type Component" : "Select Type Component",
+    "Main" : "Main",
+    "Description" : "Description"
+  },
+  "clientsList" : {
+    "Candidats List" : "Candidats List",
+    "Select Position" : "Select Position",
+    "Search" : "Search",
+    "Name" : "Name",
+    "Last Name" : "Last Name",
+    "Email" : "Email",
+    "Mobile" : "Mobile"
+  },
+  "details" : {
+    "Clients List" : "Clients List",
+    "Mobile" : "Mobile",
+    "Email" : "E-Mail"
+  }
+}

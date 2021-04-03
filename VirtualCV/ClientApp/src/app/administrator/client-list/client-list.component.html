@@ -1,0 +1,91 @@
+<mat-toolbar color="primary" style="justify-content: space-between;">
+  <div class="nav-left">
+    <button mat-icon-button class="material-icons" routerLink="/mainAdmin">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <h1 style="margin-top:3px">Main</h1>
+  </div>
+  <div class="nav-right" style="margin-top: 15px">
+    <mat-form-field style="width: 40%">
+      <mat-label>Language</mat-label>
+      <mat-select [(ngModel)]="translateService.selectedLanguage" name="lang">
+        <mat-option value="En" (click)="translateService.use('en')"> En </mat-option>
+        <mat-option value="Sr" (click)="translateService.use('sr')">Sr</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-icon style="margin-right: 16px; float: left; margin-top: 20px; margin-left: 5px"> account_circle</mat-icon>
+    <mat-label style="margin-top:16px">{{currentUserName}}</mat-label>
+  </div>
+</mat-toolbar>
+
+<div class="title">
+  <h3>{{["clientsList", "Candidats List"] | translate}}</h3>
+</div>
+
+<div class="mainSeeClient">
+  <!-- <div class="select"> -->
+
+
+  <div class="filters">
+    <div class="sec">
+
+      <div class="select">
+        <div *ngIf="showButton()" class="resetButton">
+          <button mat-button (click)="reset()" class="button">
+            <mat-icon class="material-icons">delete</mat-icon>
+          </button>
+        </div>
+        <div class="test">
+          <mat-form-field style="align-content: center;" appearance="outline">
+            <mat-label>{{['clientsList', 'Select Position'] | translate }}</mat-label>
+            <mat-select ([ngModel])="selectedPositionId" name="s">
+              <mat-option *ngFor="let position of allPositions" [value]="position.id"
+                          (click)="positionChange(position.id)">
+                {{position.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>{{["clientsList", "Search"] | translate}}</mat-label>
+            <input matInput placeholder="Search" type="text" name="search" [(ngModel)]="candidatsForSearch">
+          </mat-form-field> -->
+          <app-input-keyboard placeholder="{{['clientsList','Search'] | translate}}" (modelChange)="setQuestionForSearch($event)"
+          (keyup.esc)="reset()"></app-input-keyboard>
+        </div>
+      </div>
+    </div>
+    <div class="paginator">
+      <mat-paginator #paginator [length]="totalRows$ | async" [pageIndex]="0" [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+</div>
+
+<!-- </div> -->
+<div class="listClients">
+
+  <mat-list *ngIf="!positionId">
+    <!-- ovde promene nastaju | filter:candidatsForSearch-->
+    <mat-list-item *ngFor="let client of displayedRows$ | async| filter:candidatsForSearch">
+      <div class="clientName" style="justify-content: space-between;">
+
+        <img [src]="getPictureUrl(client.img)" mat-list-avatar height="60" width="60" />
+        <div style="margin-left: 15px">
+          <span mat-line><b>{{["clientsList", "Name"] | translate }}:</b> {{client.name}} </span>
+          <span mat-line><b>{{["clientsList", "Last Name"] | translate}}:</b> {{client.lastName}} </span>
+          <span mat-line><b>{{["clientsList", "Email"] | translate}}:</b> {{client.email}} </span>
+          <span mat-line><b>{{["clientsList", "Mobile"] | translate}}:</b> {{client.mobile}} </span>
+        </div>
+        <mat-divider></mat-divider>
+
+      </div>
+      <div class="buttonDetails">
+        <button mat-icon-button class="material-icons" style="align-items: flex-end" routerLink="/details"
+                (click)="selectIdCandidate(client)">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>

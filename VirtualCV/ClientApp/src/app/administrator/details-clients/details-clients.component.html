@@ -1,0 +1,54 @@
+<mat-toolbar color="primary" style="justify-content: space-between;">
+  <div class="nav-left">
+    <button mat-icon-button class="material-icons" routerLink="/clientsList">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <h1 style="margin-top:3px">{{["details", "Clients List"] | translate}}</h1>
+  </div>
+  <div class="nav-right" style="margin-top: 15px">
+      <mat-form-field>
+          <mat-label>Language</mat-label>
+          <mat-select [(ngModel)]="translateService.selectedLanguage" name="lang">
+            <mat-option value="En" (click)="translateService.use('en')"> En </mat-option>
+            <mat-option value="Sr" (click)="translateService.use('sr')">Sr</mat-option>
+          </mat-select>
+        </mat-form-field>
+      <mat-icon style="margin-right: 16px; float: left; margin-top: 20px; margin-left: 5px"> account_circle</mat-icon>
+      <mat-label style="margin-top:16px">{{currentUserName}}</mat-label>
+  </div>
+</mat-toolbar>
+<div class="detalisClient">
+  <mat-card>
+    <mat-card-header>
+      <img class="avatarClient" [src]="getPictureUrl(client?.img)" mat-card-avatar />
+      <mat-card-title>{{client?.name}} {{client?.lastName}}
+          <p>{{["details", "Mobile"] | translate}}: {{client?.mobile}}</p>
+          <p>{{["details", "Email"] | translate}}: {{client?.email}}</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<div class="answerClients">
+  <div *ngFor="let questionType of uniqueQuestionType;let type = index">
+    <div class="answersCards">
+      <mat-card style="height:80%;margin-bottom: 20px;">
+        <mat-card-subtitle style="text-align: center">
+          {{questionType}}
+        </mat-card-subtitle>
+
+        <div *ngFor="let answer of answersForQuestions;let i = index">
+          <div *ngIf="questionType === answer.question.questionType.nameType">
+
+            <p><strong>{{answer.question.question}}</strong> : </p>
+            <p style="display: flex; justify-content: center;word-break: break-all;">{{answer.answerQuestion}}</p>
+          </div>
+
+        </div>
+
+      </mat-card>
+    </div>
+  </div>

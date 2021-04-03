@@ -1,0 +1,147 @@
+<mat-toolbar color="primary" style="justify-content: space-between;">
+  <div class="nav-left">
+    <button mat-icon-button class="material-icons" routerLink="/mainAdmin">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <h1 style="margin-top: 3px;">{{ ["Question","Main"] | translate}}</h1>
+  </div>
+  <div class="nav-right" style="margin-top: 15px">
+    <mat-form-field style="width: 40%">
+      <mat-label>Language</mat-label>
+      <mat-select [(ngModel)]="translateService.selectedLanguage" name="lang">
+        <mat-option value="En" (click)="translateService.use('en')"> En </mat-option>
+        <mat-option value="Sr" (click)="translateService.use('sr')">Sr</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-icon style="margin-right: 16px; float: left; margin-top: 20px; margin-left: 5px"> account_circle</mat-icon>
+    <mat-label style="margin-top:15px">{{currentUserName}}</mat-label>
+  </div>
+</mat-toolbar>
+<div class="title">
+  <h3>{{["Question", "QuestionTitle"]|translate}}</h3>
+</div>
+<div class="mainDiv">
+  <div class="mainQuestion">
+    <div class="addQuestion">
+      <mat-accordion>
+        <mat-expansion-panel *ngIf="!editQuestion">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="material-icons" style="color: #C0C0C0 ;margin: inherit;">add_circle</mat-icon>
+              <span style="padding-top: 3px">{{["Question", "Add New Question"]|translate}}</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="question">
+
+            <!-- <mat-form-field appearance="outline">
+              <mat-label>{{["Question", "QuestionField" ]| translate}}</mat-label>
+              <input matInput placeholder="{{['Question', 'QuestionField'] | translate}}"
+                     [(ngModel)]="question.Question">
+            </mat-form-field> -->
+            <div class="questionInput">
+              <app-input-keyboard (modelChange)="setQuestion($event)" 
+                                  placeholder="{{['Question', 'QuestionField'] | translate}}" class="questionInput"></app-input-keyboard>
+            </div>
+            <div class="question-option">
+              <mat-form-field appearance="outline" class="mat-form">
+                <mat-label>{{["Question","Select Position"] | translate}}</mat-label>
+                <mat-select [(ngModel)]="multiplePosition" name="pos" multiple>
+                  <mat-option *ngFor="let position of positions" [value]="position.id">
+                    {{position.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="mat-form">
+                <mat-label>{{["Question", "Select Type Question"] | translate}}</mat-label>
+                <mat-select [(value)]="question.QuestionTypeId" name="typeQ">
+                  <mat-option *ngFor="let type of questionTypes" [value]="type.id">
+                    {{type.nameType}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="mat-form">
+                <mat-label>{{["Question", "Select Type Component"] | translate}}</mat-label>
+                <mat-select [(value)]="question.ComponentId" name="typeC">
+                  <mat-option *ngFor="let component of questionComponents" [value]="component.id">
+                    {{component.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-icon-button class="material-icons" style="background-color: #ff9800; color: white"
+                  (click)="postQuestion(question)">
+            <mat-icon>save</mat-icon>
+          </button>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="listQuestion">
+      <mat-card style="display:flex; width: 100%">
+        <mat-list role="list" style="text-align: left;margin-left: 15px; width: 100%;">
+          <h3 mat-subheader style="justify-content: center">{{["Question" , "Existing Question"] | translate}}</h3>
+          <div class="selectPositionQ">
+            
+            <mat-form-field appearance="outline" class="filter-mat-form">
+              <mat-label>{{["Question" , "Select Position"] | translate}}</mat-label>
+              <mat-select [(value)]="selectedPositionQuestion" name="p">
+                <mat-option *ngFor="let position of positions" [value]="position.id"
+                (click)="getQuestionForPosition(position.id)">
+                {{position.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div style="align-items: flex-end;" *ngIf="showButton()">
+            <button mat-button (click)="resetFilter()" class="button">
+              <mat-icon class="material-icons">delete</mat-icon>
+            </button>
+          </div>
+          <mat-form-field appearance="outline" class="filter-mat-form">
+              <mat-label>{{["Question" , "Select Type"] | translate}}</mat-label>
+              <mat-select [(value)]="selectedTypeQuestion" name="t">
+                <mat-option *ngFor="let type of questionTypes" [value]="type.id" (click)="getQuestionsForType(type.id)">
+                  {{type.nameType}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="searchQuestion">
+            <app-input-keyboard placeholder="{{['Question','Search'] | translate}}" (modelChange)="setQuestionForSearch($event)" class="virtualKeyboard"></app-input-keyboard>
+          </div>
+          <div class="paginator">
+            <mat-paginator #paginator [length]="totalRows$ | async" [pageIndex]="0" [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+          <mat-list-item *ngFor="let question of displayedRows$ | async |  filter:questionForSearch">
+            <mat-divider style="background:#ff9800"></mat-divider>
+            <span mat-line>{{question.question}}</span>
+            <button mat-icon-button class="material-icons" (click)="selectquestion(question)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+
+  </div>
+  <div *ngIf="editQuestion" class="edit-question">
+    <mat-card class="edit-card">
+      <div style="display: flex; flex-direction: column">
+        <mat-form-field>
+          <!-- <input matInput placeholder="Edit Question" [(ngModel)]="editQuestion.question"> -->
+          <textarea matInput placeholder="{{['Question' , 'Description'] | translate}}"
+                    [(ngModel)]=editQuestion.question name="question"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-icon-button (click)="edit(editQuestion.id, editQuestion)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

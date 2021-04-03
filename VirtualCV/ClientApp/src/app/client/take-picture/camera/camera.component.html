@@ -1,0 +1,16 @@
+<div style="text-align:center">
+	<div>
+		<webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+		 [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+		 (initError)="handleInitError($event)" ([ngModel])= "client.Img"></webcam>
+    <br/>
+    <button class="material-icons" mat-button (click)="triggerSnapshot()"><mat-icon>camera_alt</mat-icon></button>
+	</div>
+</div>
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+	<li>{{error | json}}</li>
+</ul>
+
+<!-- [height]="500" [width]="500" -->
